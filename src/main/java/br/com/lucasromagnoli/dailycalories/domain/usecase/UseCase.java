@@ -1,7 +1,11 @@
 package br.com.lucasromagnoli.dailycalories.domain.usecase;
 
-import org.springframework.stereotype.Service;
-
 public interface UseCase<T> {
-    T handle(T t);
+    default T handle(T t) {
+        throw new UnsupportedOperationException();
+    };
+
+    default T handle() {
+        throw new UnsupportedOperationException();
+    }
 }
