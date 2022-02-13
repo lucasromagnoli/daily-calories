@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Getter
@@ -39,6 +40,8 @@ public class Food {
                         .protein(foodSave.getProtein())
                         .carbohydrate(foodSave.getCarbohydrate())
                         .fat(foodSave.getFat())
+                        .unityEnum(Optional.ofNullable(UnityEnum.getByAbbreviationOrCode(foodSave.getUnity()))
+                                .orElseThrow(() -> new RuntimeException("Unity not found.")))
                         .build())
                 .build();
     }

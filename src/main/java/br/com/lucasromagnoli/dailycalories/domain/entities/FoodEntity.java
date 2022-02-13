@@ -20,13 +20,8 @@ public class FoodEntity {
     private NutritionalTableEntity nutritionalTable;
 
     public static FoodEntity from(Food food) {
-        var nutritionalTableEntity = new NutritionalTableEntity();
         var foodEntity = new FoodEntity();
-        nutritionalTableEntity.setCarbohydrate(food.getNutritionalTable().getCarbohydrate());
-        nutritionalTableEntity.setProtein(food.getNutritionalTable().getProtein());
-        nutritionalTableEntity.setCalorie(food.getNutritionalTable().getCalorie());
-        nutritionalTableEntity.setFat(food.getNutritionalTable().getFat());
-        nutritionalTableEntity.setFood(foodEntity);
+        var nutritionalTableEntity = NutritionalTableEntity.from(food.getNutritionalTable(), foodEntity);
         foodEntity.setId(food.getId());
         foodEntity.setName(food.getName());
         foodEntity.setNutritionalTable(nutritionalTableEntity);

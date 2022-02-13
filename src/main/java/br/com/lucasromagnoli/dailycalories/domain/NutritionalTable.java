@@ -13,13 +13,15 @@ public class NutritionalTable {
     private final Float carbohydrate;
     private final Float fat;
     private final Float calorie;
+    private final UnityEnum unityEnum;
 
     @Builder
-    public NutritionalTable(Long id, Float protein, Float carbohydrate, Float fat) {
+    public NutritionalTable(Long id, Float protein, Float carbohydrate, Float fat, UnityEnum unityEnum) {
         this.id = id;
         this.protein = protein;
         this.carbohydrate = carbohydrate;
         this.fat = fat;
+        this.unityEnum = unityEnum;
         this.calorie = evalCalories();
     }
 
@@ -29,6 +31,7 @@ public class NutritionalTable {
                 .protein(nutritionalTable.getProtein())
                 .carbohydrate(nutritionalTable.getCarbohydrate())
                 .fat(nutritionalTable.getFat())
+                .unityEnum(nutritionalTable.getUnity())
                 .build();
     }
 

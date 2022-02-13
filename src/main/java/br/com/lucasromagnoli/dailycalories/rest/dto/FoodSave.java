@@ -11,4 +11,5 @@ public class FoodSave {
     private Float fat;
     private Float protein;
     private Float carbohydrate;
+    private String unity;
 }
