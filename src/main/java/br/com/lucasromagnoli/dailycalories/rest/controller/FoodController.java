@@ -31,6 +31,7 @@ public class FoodController {
 
     @PostMapping
     public ResponseEntity<Food> save(@RequestBody FoodSave foodSave) {
-        return ResponseEntity.ok(Food.from(foodSave).save(saveFoodUseCase));
+        var food = Food.from(foodSave);
+        return ResponseEntity.ok(food.save(saveFoodUseCase));
     }
 }

@@ -13,6 +13,7 @@ public class SaveFoodUseCase implements UseCase<Food> {
     private final FoodRepository foodRepository;
 
     public Food handle(Food food) {
-        return Food.from(foodRepository.save(FoodEntity.from(food)));
+        var foodEntity = foodRepository.save(FoodEntity.from(food));
+        return Food.from(foodEntity);
     }
 }

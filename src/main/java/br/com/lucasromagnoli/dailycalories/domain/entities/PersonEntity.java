@@ -1,5 +1,6 @@
 package br.com.lucasromagnoli.dailycalories.domain.entities;
 
+import br.com.lucasromagnoli.dailycalories.domain.Person;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,10 @@ public class PersonEntity {
     @OneToMany
     @JoinColumn(name = "person_id")
     private List<DailyRegisterEntity> registers;
+
+    public static PersonEntity from(Person person) {
+        var personEntity = new PersonEntity();
+        personEntity.setName(person.getName());
+        return personEntity;
+    }
 }

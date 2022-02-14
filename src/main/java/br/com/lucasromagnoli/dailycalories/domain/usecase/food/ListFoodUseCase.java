@@ -15,6 +15,7 @@ public class ListFoodUseCase implements UseCase<List<Food>> {
 
     @Override
     public List<Food> handle() {
-        return Food.from(foodRepository.findAll());
+        var foodEntities = foodRepository.findAll();
+        return Food.from(foodEntities);
     }
 }
