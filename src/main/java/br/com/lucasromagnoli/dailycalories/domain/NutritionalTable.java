@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NutritionalTable {
-    private final Long id;
     private final Float protein;
     private final Float carbohydrate;
     private final Float fat;
@@ -16,8 +15,7 @@ public class NutritionalTable {
     private final UnityEnum unityEnum;
 
     @Builder
-    public NutritionalTable(Long id, Float protein, Float carbohydrate, Float fat, UnityEnum unityEnum) {
-        this.id = id;
+    public NutritionalTable(Float protein, Float carbohydrate, Float fat, UnityEnum unityEnum) {
         this.protein = protein;
         this.carbohydrate = carbohydrate;
         this.fat = fat;
@@ -27,7 +25,6 @@ public class NutritionalTable {
 
     public static NutritionalTable from(NutritionalTableEntity nutritionalTable) {
         return NutritionalTable.builder()
-                .id(nutritionalTable.getId())
                 .protein(nutritionalTable.getProtein())
                 .carbohydrate(nutritionalTable.getCarbohydrate())
                 .fat(nutritionalTable.getFat())

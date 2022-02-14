@@ -9,28 +9,22 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+@Embeddable
 public class NutritionalTableEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private Float protein;
     private Float carbohydrate;
     private Float fat;
     private Float calorie;
     @Enumerated(EnumType.STRING)
     private UnityEnum unity;
-    @OneToOne(mappedBy = "nutritionalTable")
-    private FoodEntity food;
 
-    public static NutritionalTableEntity from(NutritionalTable nutritionalTable, FoodEntity foodEntity) {
+    public static NutritionalTableEntity from(NutritionalTable nutritionalTable) {
         var nutritionalTableEntity = new NutritionalTableEntity();
         nutritionalTableEntity.setCarbohydrate(nutritionalTable.getCarbohydrate());
         nutritionalTableEntity.setProtein(nutritionalTable.getProtein());
         nutritionalTableEntity.setCalorie(nutritionalTable.getCalorie());
         nutritionalTableEntity.setFat(nutritionalTable.getFat());
         nutritionalTableEntity.setUnity(nutritionalTable.getUnityEnum());
-        nutritionalTableEntity.setFood(foodEntity);
 
         return nutritionalTableEntity;
     }
