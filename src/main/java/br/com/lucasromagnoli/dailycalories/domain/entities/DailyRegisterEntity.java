@@ -1,5 +1,6 @@
 package br.com.lucasromagnoli.dailycalories.domain.entities;
 
+import br.com.lucasromagnoli.dailycalories.domain.DailyRegister;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,19 @@ public class DailyRegisterEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
-    @OneToMany
+    @ManyToOne
+    private PersonEntity person;
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="daily_register_id")
     private List<MealEntity> meals;
+
+    public static DailyRegisterEntity from(DailyRegister dailyRegister) {
+        var personEntity = new PersonEntity();
+        personEntity.setId(dailyRegister.getPersonId());
+
+        var dailyRegisterEntity = new DailyRegisterEntity();
+        dailyRegisterEntity.setDate(dailyRegister.getDate());
+        dailyRegisterEntity.setPerson(personEntity);
+        return dailyRegisterEntity;
+    }
 }

@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,9 @@ public class Food {
         return Food.builder()
                 .id(foodEntity.getId())
                 .name(foodEntity.getName())
-                .nutritionalTable(NutritionalTable.from(foodEntity.getNutritionalTable()))
+                .nutritionalTable(Objects.nonNull(foodEntity.getNutritionalTable())
+                        ? NutritionalTable.from(foodEntity.getNutritionalTable())
+                        : null)
                 .build();
     }
 
