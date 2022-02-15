@@ -50,7 +50,7 @@ public class Food {
     }
 
     public static List<Food> list(ListFoodUseCase listFoodUseCase) {
-        return  listFoodUseCase.handle();
+        return listFoodUseCase.handle();
     }
 
     public static Food get(Long id, GetFoodUseCase getFoodUseCase) {
